@@ -1,24 +1,74 @@
+/*Set our font family, and background color */
 body {
     font-family: 'Nunito', sans-serif;
     background: #EFF1F7;
 }
+/* Specifies a grid to start in our content area. Adds our little shape art.*/
 .content {
     grid-area: content;
     background: url(../images/art/Lines.png);
 }
-
+/* Give our sidebar a color gradiant */
 .sidebar {
-    grid-area: Sidebar;
+    grid-area: sidebar;
     background: linear-gradient(to right,
     rgba(255, 42, 234, 1),
     rgba(240, 101, 115, 1),
     rgba(225, 158, 1, 1));
     justify-content: center;
 }
+
+.portcontainer{
+    padding: 1em 5em;
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template-areas:'square1 square1 largesquare largesquare largesquare'
+      'square1 square1 largesquare largesquare largesquare'
+      'square2 square2 largesquare largesquare largesquare'
+      'square2 square2 smallsquare tallrect tallrect'
+      'widerect widerect widerect tallrect tallrect'
+      'widerect widerect widerect tallrect tallrect';
+    height: 30em;
+}
+.tile{
+    background: white;
+    margin: 0.2em;
+    padding: 3em;
+    text-align: center;
+    transition: all .1s linear;
+}
+.tile:hover {
+    background: rgba(0,0,0,0.2);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+#tile__1{
+    grid-area: square1;
+}
+#tile__2{
+    grid-area: largesquare;  
+}
+#tile__3{
+    grid-area: square2; 
+}
+#tile__4{
+    grid-area: smallsquare;   
+}
+#tile__5{
+    grid-area: tallrect;
+}
+#tile__6{
+    grid-area: widerect;
+}
+/* Make ita part of the grid, set it to white.*/
 .footer {
-    grid-area: Footer;
+    grid-area: footer;
     background: white;
 }
+/*Font size, full width, height equal to 100% of viewport */
+/*Remember those grid areas from above, we call them here.
+Set columns equal to 1fr, and then rows for 130, 800 and 250*/
 .container {
     font-size: 1.5em;
     width: 100%;
@@ -31,11 +81,13 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: 130px 800px 250px;
 }
+/*WHen in doubt, pad em out.*/
 .content,
 .sidebar,
 .footer {
     padding: 1em;
 }
+/* Flex display, have the list items space out.*/
 nav ul {
     margin: 0;
     padding: 0;
@@ -47,6 +99,7 @@ nav li {
     list-style: none;
     padding: 1em 0;
 }
+/* Part one of Hover effect. Appear bland until hovered over*/
 nav li a {
     color: white;
     font-weight: 700;
@@ -54,27 +107,33 @@ nav li a {
     text-decoration: none;
     transition: 0.3s;
 }
+/* Actual hover affect that makes them bright when hovered.*/
 nav li a:hover {
     opacity: 1;
 }
+/* How big do we want it? */
 .hero {
     max-width: 960px;
     margin: 0 auto;
     text-align: center;
 }
+/* Keep it small. No one needs to see my face larger than necessary. */
 .hero img {
     width: 200px;
 }
+/* Size and color. */
 .hero h1 {
     font-size: 2em;
     font-weight: 300;
     color: #373d46;
 }
+/* See above. */
 .hero p {
     font-weight: 300;
     line-height: 1.8em;
     color: #98a0ad;
 }
+/* Fancy little button thing. */
 .action-button {
     display: inline-block;
     text-decoration: none;
@@ -86,15 +145,17 @@ nav li a:hover {
     margin: 1em 0;
     transition: 0.3s;
 }
+/* Make it look nice whne hovered over. */
 .action-button:hover {
     box-shadow: 0 10px 50px rgba(188, 197, 216, 1);
 }
+/* We want the items in our footer to breathe.*/
 footer ul {
     max-width: 640px;
     margin: 2em auto;
     padding: 0;
     text-align: center;
-    display: felx;
+    display: flex;
     flex-direction: row;
 }
 footer ul li {
@@ -105,13 +166,12 @@ footer ul li a {
     text-decoration: none;
     color: #c1c6ce;
 }
-footer ul li img {
+/* We want our images to be decently sized */
+footer ul li svg {
     width: 40%;
 }
-footer p {
-    font-size: 0.8em;
-}
 
+/* Media check. Adjust a view things. This is for regular web browsers (not mobile). */
 @media (min-width: 1040px) {
     .container {
         grid-template-areas:
